@@ -1,0 +1,9 @@
+{
+    "copyright": "MikroElektronika",
+    "title": "Bargraph Display",
+    "text": "The Bargraph display is a simple shift register that allows for a 10 segment display with PWM dimmable intensity",
+    "version": ".1",
+    "files":[
+        ["Bargraph Click","bargraph_click.py"]
+    ]
+}
