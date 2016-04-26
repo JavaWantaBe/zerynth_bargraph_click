@@ -7,14 +7,14 @@ Bargraph Click
 This module contains the :class:`Bargraph` is a 10 segment shift register 
 that can vary led intensity with PWM.
 .. class:: Bargraph
-    
+
     Creates an intance of a new Bargraph.
-    
-    :param drvname: SPI Bus used `( SPI0, SPI1 )`
+
     :param cs: Chip select used for latching
     :param rst: Reset pin used to reset display
     :param pwm: PWM Pin for display intensity
-    
+    :param drvname: SPI Bus used `( SPI0, SPI1 )`
+
     :Example:
 
 .. code-block:: python
@@ -29,7 +29,7 @@ that can vary led intensity with PWM.
         Writes number from 0 to 10 on display.
 
         
-.. method:: set_inensity( percent) 
+.. method:: set_inensity( percent)
 
-        Set the intensity of the led display from 0 to 100 percent. 
+        Set the intensity of the led display from 0 to 100 percent.
         
