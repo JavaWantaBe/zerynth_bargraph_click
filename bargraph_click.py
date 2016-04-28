@@ -14,7 +14,7 @@ import spi
 import pwm
 
 
-class Bargraph:
+class Bargraph(spi.Spi):
     """
 .. class:: Bargraph
 
@@ -37,15 +37,10 @@ class Bargraph:
     # initialize object
     def __init__(self, cs, rst, pwm, drvname=SPI0):
         #Global variables for class needed
-        self.port = spi.Spi.__init__(cs, drvname)
+        spi.Spi.__init__(self,cs, drvname)
         self.rst = rst
         self.pwm = pwm
         self.cs = cs
-
-        try:
-            self.port.start()
-        except Exception as e:
-            print(e)
 
         #Set modes of included pins
         pinMode(self.rst, OUTPUT)
@@ -56,9 +51,9 @@ class Bargraph:
 
     #Latch the shift registers
     def _latch( self ):
-        self.port.select()
+        self.select()
         sleep(3, MILLIS)
-        self.port.unselect()
+        self.unselect()
 
     #Reset the display
     def _reset( self ):
@@ -83,14 +78,14 @@ class Bargraph:
         value[1] = ( temp & 0x00ff )
 
         self._reset()
-        self.port.lock()
+        self.lock()
 
         try:
-            self.port.write( value )
+            self.write( value )
         except PeripheralError as e:
             print(e)
         finally:
-            self.port.unlock()
+            self.unlock()
 
         self._latch()
 
